@@ -1,0 +1,42 @@
+.stickyfx-enabled[data-stickyfx-pro="yes"] {
+  transition:
+    background-color var(--stickyfx-pro-duration, 250ms) ease,
+    box-shadow var(--stickyfx-pro-duration, 250ms) ease,
+    opacity var(--stickyfx-pro-duration, 250ms) ease,
+    transform var(--stickyfx-pro-duration, 250ms) ease,
+    backdrop-filter var(--stickyfx-pro-duration, 250ms) ease;
+}
+.stickyfx-enabled.stickyfx-fixed[data-stickyfx-pro="yes"].stickyfx-scrolled {
+  opacity: var(--stickyfx-pro-opacity, 1);
+  -webkit-backdrop-filter: blur(var(--stickyfx-pro-blur, 0px));
+  backdrop-filter: blur(var(--stickyfx-pro-blur, 0px));
+  transform: scaleY(var(--stickyfx-pro-scale, 1));
+  transform-origin: top center;
+}
+.stickyfx-enabled.stickyfx-fixed[data-stickyfx-pro="yes"].stickyfx-hidden {
+  transform: translateY(-110%) scaleY(var(--stickyfx-pro-scale, 1)) !important;
+}
+.stickyfx-enabled[data-stickyfx-pro="yes"][data-stickyfx-pro-animation-active="fade"].stickyfx-fixed.stickyfx-scrolled {
+  animation: stickyfxProFadeIn var(--stickyfx-pro-duration, 250ms) ease both;
+}
+.stickyfx-enabled[data-stickyfx-pro="yes"][data-stickyfx-pro-animation-active="slide"].stickyfx-fixed.stickyfx-scrolled {
+  animation: stickyfxProSlideIn var(--stickyfx-pro-duration, 250ms) ease both;
+}
+.stickyfx-enabled[data-stickyfx-pro="yes"][data-stickyfx-pro-animation-active="zoom"].stickyfx-fixed.stickyfx-scrolled {
+  animation: stickyfxProZoomIn var(--stickyfx-pro-duration, 250ms) ease both;
+}
+@keyframes stickyfxProFadeIn {
+  from { opacity: 0; }
+  to { opacity: var(--stickyfx-pro-opacity, 1); }
+}
+@keyframes stickyfxProSlideIn {
+  from { opacity: 0; transform: translateY(-12px) scaleY(var(--stickyfx-pro-scale, 1)); }
+  to { opacity: var(--stickyfx-pro-opacity, 1); transform: scaleY(var(--stickyfx-pro-scale, 1)); }
+}
+@keyframes stickyfxProZoomIn {
+  from { opacity: 0; transform: scale(.96); }
+  to { opacity: var(--stickyfx-pro-opacity, 1); transform: scaleY(var(--stickyfx-pro-scale, 1)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stickyfx-enabled[data-stickyfx-pro="yes"] { animation: none !important; transition: none !important; }
+}
